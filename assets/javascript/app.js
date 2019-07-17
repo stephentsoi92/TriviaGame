@@ -75,11 +75,11 @@ function nextQuestion ()
         $(".question").html(question);
         //empty answers $("#answers").empty()
         // EMPTY QUESTIONS $(.)
-        // for (var i=0; i<answerLength; i++)
         $(".answer1").html('<button>'+answerArr[0]+'</button>');
         $(".answer2").html('<button>'+answerArr[1]+'</button>');
         $(".answer3").html('<button>'+answerArr[2]+'</button>');
         $(".answer4").html('<button>'+answerArr[3]+'</button>');
+        // for (var i=0; i<answerLength; i++)
         // $("#answers").append('<p><button class="answer-btn">'+answerArr[i]+'</button></p>');
     }
 };
@@ -95,8 +95,8 @@ function beginTrivia()
 }
 function timeOut ()
 {
-    timeRemaining--
     $(".timer").html("<p>Time Remaining: "+timeRemaining+" Seconds")
+    timeRemaining--
     if (timeRemaining === 0)
     {
         currentQuestion++
@@ -152,21 +152,23 @@ function incorrectAnswer ()
 }
 function theEnd ()
 {
-    $(".trivia").empty()
+    $(".trivia").hide()
     resetTimer()
     $(".allDone").html('<p>All done, here is how you did!</p>')
     $(".correct").html('<p>Correct Answers: '+correctAns+'</p>')
     $(".incorrect").html('<p>Incorrect Answers: '+incorrectAns+'</p>')
     $(".unanswer").html('<p>Unanswered Questions: '+unanswered+'</p>')
     $(".start-over").html('<button class="replay">Start Over</button>')
-}
 // 6. Replay or start the game again
-$(".replay").on("click", function() // DOES NOT WORK
-{
-    currentQuestion = 0
-    $(".results").empty() //gets all the page blank
-    beginTrivia()
-})
+    $(".replay").on("click", function() 
+    {
+        currentQuestion = 0
+        $(".results").hide() 
+        $(".trivia").show()
+        beginTrivia()
+    })
+}
+
 
 //  make the page active for click
 // $(document).on("click", function (event)
